@@ -1,0 +1,46 @@
+.board-block {
+  margin-bottom: 40px;
+}
+
+.board-nav {
+  font-weight: bold;
+  display: block;
+}
+
+.board-order {
+  font-weight: bolder;
+  padding-right: 10px;
+  color: #cb566b;
+}
+
+.board-contents {
+  margin: 0;
+}
+
+.boards {
+  height: 120px;
+  margin: 0;
+  padding: 0;
+  padding-bottom: 7px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #c4c4c4;
+}
+
+.board {
+  padding: 12px;
+  padding-left: 20px;
+  margin: 0;
+  border-left: 1px solid #c4c4c4;
+  overflow: hidden;
+  height: 16px;
+}
+
+.board:first-child,
+.board:nth-child(2),
+.board:nth-child(3) {
+  border-left: none;
+}
+
+/*# sourceMappingURL=HotBoardTemplate.css.map */

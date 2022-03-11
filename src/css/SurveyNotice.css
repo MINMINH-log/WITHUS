@@ -1,0 +1,52 @@
+.survey-notice-block {
+  background-color: #191919;
+  opacity: 80%;
+}
+
+.css-1fzpoyk {
+  width: 600px;
+}
+
+.survey-notice-list {
+  width: 500px;
+  list-style-type: none;
+  background-color: #fafafa;
+  border: #f2cc4d 2px solid;
+  height: 300px;
+}
+
+.survey-notice-description,
+.join.latest {
+  text-align: center;
+  margin: 10px;
+  position: relative;
+}
+
+.survey-notice-src,
+.survey-notice-title {
+  margin: 10px;
+  position: relative;
+}
+
+.survey-notice-src-txt {
+  border-bottom: 1px solid #f2cc4d;
+  padding: 3px 15px;
+}
+
+.survey-notice-description {
+  height: 180px;
+  overflow: hidden;
+}
+
+.survey-notice-title {
+  font-size: 16px;
+}
+
+.join-txt {
+  padding: 5px 60px;
+  background-color: #fcefc2;
+  border-radius: 10%;
+  font-weight: bolder;
+}
+
+/*# sourceMappingURL=SurveyNotice.css.map */

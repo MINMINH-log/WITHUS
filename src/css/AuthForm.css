@@ -1,0 +1,53 @@
+.authform-block {
+  width: 553px;
+  padding: 24px;
+  border: 2px solid #c4c4c4;
+  border-radius: 5px;
+}
+
+.auth-input-block {
+  border: 1px solid #c4c4c4;
+  padding: 17px 18px 17px 19px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+.auth-input-block .auth-icon {
+  color: #3b3b3b;
+  padding-right: 5px;
+}
+
+.auth-input {
+  display: block;
+  outline: none;
+  border: none;
+  width: 100%;
+}
+
+.auth-footer {
+  text-align: center;
+  margin-top: 10px;
+  height: 30px;
+  line-height: 30px;
+}
+.auth-footer a {
+  color: gray;
+  text-decoration: none;
+  margin-right: 24px;
+}
+.auth-footer a:last-child {
+  margin-right: 0;
+}
+
+.authform-login-btn {
+  display: block;
+  width: 100%;
+  line-height: 55px;
+  height: 55px;
+  text-align: center;
+  background-color: #f2cc4d;
+  border-radius: 5px;
+  margin-top: 40px;
+}
+
+/*# sourceMappingURL=AuthForm.css.map */

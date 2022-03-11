@@ -1,0 +1,45 @@
+.modal {
+  position: relative;
+  .header {
+    position: relative;
+    .close-modal {
+      position: absolute;
+      right: 0;
+    }
+  }
+
+  .title {
+    border-bottom: none;
+  }
+  .title-bottom {
+    position: relative;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #767676;
+    margin-bottom: 10px;
+    .writer {
+      display: inline-block;
+    }
+    .response {
+      display: inline-block;
+      position: absolute;
+
+      right: 0;
+    }
+  }
+
+  .prgp {
+    min-height: 200px;
+  }
+
+  .func {
+    position: absolute;
+    right: 0;
+    cursor: pointer;
+    .save,
+    .share {
+      padding-right: 10px;
+      border-right: 0.5px solid #c4c4c4;
+      margin-right: 10px;
+    }
+  }
+}

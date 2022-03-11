@@ -1,0 +1,109 @@
+.promote-univ {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.navi-control {
+  position: absolute;
+  right: 40px;
+  bottom: 130px;
+}
+
+.mapbox-block {
+  position: relative;
+  left: 10px;
+  width: 400px;
+  height: 400px;
+}
+
+.area-items {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  position: relative;
+  padding: 0;
+  height: 400px;
+  background-color: #e0e0e0;
+  text-align: center;
+  width: 50px;
+}
+
+.area-item {
+  list-style-type: none;
+  flex-grow: 1;
+}
+
+.promote-search-bar {
+  width: 300px;
+  display: flex;
+  border: 2px solid #747474;
+  background-color: white;
+  height: 40px;
+  align-items: center;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  top: 50px;
+}
+
+.promote-search-block {
+  width: 330px;
+  position: relative;
+}
+
+.promote-search-block {
+  position: relative;
+  height: 400px;
+  background-color: #f4f4f8;
+  width: 350px;
+}
+
+.univ-list {
+  position: absolute;
+  width: 300px;
+  background-color: white;
+  padding: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  top: 210px;
+  height: 280px;
+  overflow: auto;
+}
+
+.univ-list::-webkit-scrollbar {
+  width: 10px;
+}
+
+.univ-list::-webkit-scrollbar-thumb {
+  background-color: #2f3542;
+  border-radius: 10px;
+  background-clip: padding-box;
+  border: 2px solid transparent;
+}
+
+.univ-list::-webkit-scrollbar-track {
+  background-color: grey;
+  border-radius: 10px;
+  box-shadow: inset 0px 0px 5px white;
+}
+
+.univ-item {
+  list-style-type: none;
+  text-align: center;
+  padding: 10px;
+  border: 1px solid #f4f4f8;
+}
+
+.btn-marker {
+  background: url("./marker_red.jpg") no-repeat center/contain;
+  width: 22px;
+  height: 35px;
+  border: none;
+}
+
+.btn-marker:focus {
+  outline: transparent;
+}
+
+/*# sourceMappingURL=PromoteTemplate.css.map */

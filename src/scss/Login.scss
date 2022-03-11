@@ -1,0 +1,39 @@
+.login {
+  background-color: #f4f4f8;
+  border: 0.5px #c4c4c4 solid;
+  margin-top: 10px;
+  padding-bottom: 10px;
+}
+
+.link-login {
+  padding: 15px 0;
+  margin: 10px;
+  background-color: #f2cc4d;
+  text-align: center;
+  cursor: pointer;
+}
+
+.findid,
+.findpw {
+  padding-right: 15px;
+  border-right: 1px solid #f2cc4d;
+  margin-right: 15px;
+  cursor: pointer;
+}
+
+.login-sub {
+  position: relative;
+  height: 30px;
+}
+
+.login-sub-content {
+  position: absolute;
+  width: fit-content;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.signup {
+  cursor: pointer;
+}

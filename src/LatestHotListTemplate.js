@@ -1,11 +1,18 @@
 /*eslint-disable*/
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../src/css/LatestHotListTemplate.css";
 import { faHeart, faImage, faEdit } from "@fortawesome/free-regular-svg-icons";
 import { Link } from "react-router-dom";
+import useToggleHeart from "./useToggleHeart";
+import { faHeart as fullHeart } from "@fortawesome/free-solid-svg-icons";
 
-const LatestHotListTemplate = ({ latestContents, hotContents }) => {
+const LatestHotListTemplate = ({
+  latestContents,
+  setLatestContents,
+  hotContents,
+  setHotContents,
+}) => {
   const majorCategories = [
     { name: "latest", text: "최근 게시글" },
     { name: "hot", text: "인기글" },
@@ -44,46 +51,24 @@ const LatestHotListTemplate = ({ latestContents, hotContents }) => {
     );
   };
 
-  const LatestList = () => {
-    let majorContentsSelected = [];
-    const showMajorSelected = () => {
-      if (selectMajorCategory === "latest") {
-        majorContentsSelected = [...latestContents];
-      } else if (selectMajorCategory === "hot") {
-        majorContentsSelected = [...hotContents];
-      }
-    };
+  let majorContentsSelected = latestContents;
+  let setMajorContentsSelected = setLatestContents;
 
-    return (
-      <tbody className="latest-contents">
-        {showMajorSelected()}
-        {majorContentsSelected.slice(0, 45).map((c) => (
-          <tr className="latest-content" key={c.id}>
-            <td className="latest-src">{c.src}</td>
-            <td className="latest-description">
-              {c.prgp}
-              <span className="latest-img">
-                {c.img && (
-                  <FontAwesomeIcon icon={faImage} className="latest-img-i" />
-                )}
-              </span>
-              <span className="latest-commentcount">[{c.comment}]</span>
-            </td>
-
-            <td className="latest-writer">{c.writer}</td>
-            <td className="latest-writtenTime">{c.time}</td>
-            <td className="latest-viewed">{c.watched}</td>
-            <td className="like-span">
-              <span className="like">
-                <FontAwesomeIcon icon={faHeart} className="like-i" />
-              </span>
-              <span className="like-count">{c.like}</span>
-            </td>
-          </tr>
-        ))}
-      </tbody>
-    );
+  const selectMajorCategoryFunc = () => {
+    if (selectMajorCategory === "latest") {
+      (majorContentsSelected = latestContents),
+        (setMajorContentsSelected = setLatestContents);
+      console.log(selectMajorCategory);
+    } else if (selectMajorCategory === "hot") {
+      (majorContentsSelected = hotContents),
+        (setMajorContentsSelected = setHotContents);
+      console.log(selectMajorCategory);
+    }
   };
+  const { toggleHeart } = useToggleHeart(
+    majorContentsSelected,
+    setMajorContentsSelected
+  );
 
   return (
     <>
@@ -100,7 +85,41 @@ const LatestHotListTemplate = ({ latestContents, hotContents }) => {
             <th className="marker-like">좋아요</th>
           </tr>
         </thead>
-        <LatestList />
+        <tbody className="latest-contents">
+          {selectMajorCategoryFunc()}
+          {majorContentsSelected.slice(0, 30).map((c, i) => (
+            <tr className="latest-content" key={c.id}>
+              <td className="latest-src">{c.src}</td>
+              <td className="latest-description">
+                {c.prgp}
+                <span className="latest-img">
+                  {c.img && (
+                    <FontAwesomeIcon icon={faImage} className="latest-img-i" />
+                  )}
+                </span>
+                <span className="latest-commentcount">
+                  [{c.commentInfo.comment}]
+                </span>
+              </td>
+
+              <td className="latest-writer">{c.writer}</td>
+              <td className="latest-writtenTime">{c.time}</td>
+              <td className="latest-viewed">{c.watched}</td>
+              <td className="like-span">
+                <span className="like">
+                  <span className="like-icon" onClick={() => toggleHeart(i)}>
+                    {c.likeClicked ? (
+                      <FontAwesomeIcon icon={fullHeart} />
+                    ) : (
+                      <FontAwesomeIcon icon={faHeart} />
+                    )}
+                  </span>
+                </span>
+                <span className="like-count">{c.like}</span>
+              </td>
+            </tr>
+          ))}
+        </tbody>
       </table>
     </>
   );

@@ -96,7 +96,8 @@ const HotTemplate = ({
     );
   };
   // category에 맞는 list
-  let [categorySelected, setCategorySelected] = useState();
+  let categorySelected = timeContent;
+  let setCategorySelected = setTimeContent;
   const selectCategoryFunc = () => {
     selectCategory === "time"
       ? ((categorySelected = timeContent),
@@ -118,10 +119,11 @@ const HotTemplate = ({
         {categorySelected.slice(startIndex, startIndex + 10).map((c, i) => (
           <HotComponent
             content={c}
+            categorySelected={categorySelected}
+            setCategorySelected={setCategorySelected}
             order={i}
             key={i}
             startIndex={startIndex}
-            setCategorySelected={setCategorySelected}
           />
         ))}
       </ul>

@@ -40,7 +40,9 @@ const ThemeTemplate = () => {
       />
       <LatestHotListTemplate
         latestContents={themeLatestContents}
+        setLatestContents={setThemeLatestContents}
         hotContents={themeHotContents}
+        setHotContents={setThemeHotContents}
       />
     </>
   );

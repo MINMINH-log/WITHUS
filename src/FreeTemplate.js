@@ -43,7 +43,9 @@ const FreeTemplate = () => {
       />
       <LatestHotListTemplate
         latestContents={freeLatestContents}
+        setLatestContents={setFreeLatestContents}
         hotContents={freeHotContents}
+        setHotContents={setFreeHotContents}
       />
     </>
   );

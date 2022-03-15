@@ -45,7 +45,9 @@ const MajorTemplate = () => {
       />
       <LatestHotListTemplate
         latestContents={majorLatestContents}
+        setLatestContents={setMajorLatestContents}
         hotContents={majorHotContents}
+        setHotContents={setMajorHotContents}
       />
     </>
   );

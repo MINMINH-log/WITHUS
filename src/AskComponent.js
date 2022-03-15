@@ -3,10 +3,12 @@ import React, { useState, useCallback, useRef } from "react";
 import "../src/css/AskComponent.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faCommentAlt } from "@fortawesome/free-regular-svg-icons";
+import { faHeart as fullHeart } from "@fortawesome/free-solid-svg-icons";
 import "./bulkContents";
 import createBulkContents from "./bulkContents";
 import Modal from "react-modal";
 import "./css/Modal.css";
+import useToggleHeart from "./useToggleHeart";
 
 const AskComponent = () => {
   // 질문 카테고리 left column 1행
@@ -83,65 +85,79 @@ const AskComponent = () => {
 
   // 질문 카테고리 left column 2행
   const AskList = () => {
-    let askContentsSelected = [];
+    let [askContentsSelected, setAskContentsSelected] = useState(askCampusLife);
     const showAskSelected = () => {
       if (selectAskCategory === "campus") {
-        askContentsSelected = askCampusLife;
+        (askContentsSelected = askCampusLife),
+          (setAskContentsSelected = setAskCampusLife);
       } else if (selectAskCategory === "relationship") {
-        askContentsSelected = askRelationship;
+        (askContentsSelected = askRelationship),
+          (setAskContentsSelected = setAskRelationship);
       } else if (selectAskCategory === "studies") {
-        askContentsSelected = askStudies;
+        (askContentsSelected = askStudies),
+          (setAskContentsSelected = setAskStudies);
       }
     };
+
+    const { toggleHeart, toggleCommentHeart } = useToggleHeart(
+      askContentsSelected,
+      setAskContentsSelected
+    );
     return (
       <>
         <ul className="latestblock-contents">
           {showAskSelected()}
           {askContentsSelected.map((content, i) => (
-            <>
-              <li className="latestblock-content" key={i}>
-                <div className="latestblock-src">{content.src}</div>
-                <h1 className="latestblock-title" onClick={toggleModal}>
-                  {content.title}
-                </h1>
-                <p
-                  className="latestblock-description ask"
-                  onClick={toggleModal}
-                >
-                  {content.prgp}
-                </p>
+            <li className="latestblock-content" key={i}>
+              <div className="latestblock-src">{content.src}</div>
+              <h1 className="latestblock-title" onClick={toggleModal}>
+                {content.title}
+              </h1>
+              <p className="latestblock-description ask" onClick={toggleModal}>
+                {content.prgp}
+              </p>
 
-                <div className="best-comment-block">
-                  <h1 className="best-comment-nav ">BEST</h1>
+              <div className="best-comment-block">
+                <h1 className="best-comment-nav ">BEST</h1>
 
-                  <div className="best-comment-contents">
-                    <div className="best-comment-writer">
-                      <img
-                        className="best-commenter-img"
-                        src={require("../src/img/withus_empty.jpg")}
-                      />
-                      <span className="best-commenter">
-                        {content.bestCommenter}
-                      </span>
-                    </div>
-
-                    <div className="best-comment-content">
-                      <span className="best-comment">
-                        {content.bestComment}
-                      </span>
-                    </div>
-
-                    <span className="like-span latest">
-                      <span className="like">
-                        <FontAwesomeIcon icon={faHeart} className="like-i" />
-                      </span>
-                      <span className="like-count">{content.commentLike}</span>
+                <div className="best-comment-contents">
+                  <div className="best-comment-writer">
+                    <img
+                      className="best-commenter-img"
+                      src={require("../src/img/withus_empty.jpg")}
+                    />
+                    <span className="best-commenter">
+                      {content.commentInfo.bestCommenter}
                     </span>
                   </div>
+
+                  <div className="best-comment-content">
+                    <span className="best-comment">
+                      {content.commentInfo.bestComment}
+                    </span>
+                  </div>
+
+                  <span className="like-span latest">
+                    <span className="like">
+                      <span
+                        className="like-icon"
+                        onClick={() => toggleCommentHeart(i)}
+                      >
+                        {content.commentInfo.likeClicked ? (
+                          <FontAwesomeIcon icon={fullHeart} />
+                        ) : (
+                          <FontAwesomeIcon icon={faHeart} />
+                        )}
+                      </span>
+                    </span>
+                    <span className="like-count">
+                      {content.commentInfo.like}
+                    </span>
+                  </span>
                 </div>
-                <div className="showmore">더보기</div>
-              </li>
-            </>
+              </div>
+              <div className="showmore">더보기</div>
+            </li>
           ))}
         </ul>
       </>

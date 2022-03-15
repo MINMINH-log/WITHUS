@@ -5,17 +5,19 @@ import { faHeart, faCommentAlt } from "@fortawesome/free-regular-svg-icons";
 import { faHeart as fullHeart } from "@fortawesome/free-solid-svg-icons";
 import cn from "classnames";
 import { Link } from "react-router-dom";
-import toggleHeart from "./useToggleHeart";
+import useToggleHeart from "./useToggleHeart";
 
 const HotComponent = ({
   content,
-  selectCategory,
-  setCategorySelected,
   order,
   startIndex,
+  categorySelected,
+  setCategorySelected,
 }) => {
-  const { id, writer, img, prgp, src, time, like, comment, likeClicked } =
+  const { id, writer, img, prgp, src, time, like, commentInfo, likeClicked } =
     content;
+  const contentIndex = startIndex + order;
+  const { toggleHeart } = useToggleHeart(categorySelected, setCategorySelected);
 
   return (
     <li className="hot-content" id={id}>
@@ -36,9 +38,13 @@ const HotComponent = ({
             <span className="like">
               <span
                 className="like-icon"
-                onClick={() => toggleHeart(likeClicked, setCategorySelected)}
+                onClick={() => toggleHeart(contentIndex)}
               >
-                <FontAwesomeIcon icon={faHeart} />
+                {likeClicked ? (
+                  <FontAwesomeIcon icon={fullHeart} />
+                ) : (
+                  <FontAwesomeIcon icon={faHeart} />
+                )}
               </span>
             </span>
             <span className="like-count">{like}</span>
@@ -46,7 +52,7 @@ const HotComponent = ({
 
           <span className="comment">
             <FontAwesomeIcon icon={faCommentAlt} className="comment-i" />
-            <span className="comment-count">{comment}</span>
+            <span className="comment-count">{commentInfo.comment}</span>
           </span>
         </div>
         <div className="src-time">

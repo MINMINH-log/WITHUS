@@ -1,6 +1,6 @@
 /* eslint-disable */
 import React, { useState, useCallback, useEffect, useRef } from "react";
-import "../src/css/header.css";
+import "css/header.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import PropTypes from "prop-types";

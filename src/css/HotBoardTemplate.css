@@ -1,46 +1,30 @@
 .board-block {
   margin-bottom: 40px;
 }
-
-.board-nav {
+.board-block .board-nav {
   font-weight: bold;
   display: block;
 }
-
-.board-order {
+.board-block table {
+  height: 110px;
+  margin-top: 10px;
+  border: none;
+}
+.board-block table tbody {
+  width: 100%;
+}
+.board-block table tbody tr {
+  display: block;
+  float: left;
+  width: 266.6666666667px;
+}
+.board-block table tbody td {
+  display: block;
+  height: 35px;
+}
+.board-block table tbody td .order {
   font-weight: bolder;
-  padding-right: 10px;
   color: #cb566b;
-}
-
-.board-contents {
-  margin: 0;
-}
-
-.boards {
-  height: 120px;
-  margin: 0;
-  padding: 0;
-  padding-bottom: 7px;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  border-bottom: 1px solid #c4c4c4;
-}
-
-.board {
-  padding: 12px;
-  padding-left: 20px;
-  margin: 0;
-  border-left: 1px solid #c4c4c4;
-  overflow: hidden;
-  height: 16px;
-}
-
-.board:first-child,
-.board:nth-child(2),
-.board:nth-child(3) {
-  border-left: none;
 }
 
 /*# sourceMappingURL=HotBoardTemplate.css.map */

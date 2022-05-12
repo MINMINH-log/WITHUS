@@ -164,7 +164,9 @@
 }
 .sm-comment .body .comment .contents-block .func {
   overflow: hidden;
-  height: 29px;
+  height: 25px;
+  display: flex;
+  margin: 10px 0;
 }
 .sm-comment .body .comment .contents-block .func .like,
 .sm-comment .body .comment .contents-block .func .reply,
@@ -173,6 +175,13 @@
   color: gray;
   padding: 2px 10px;
   margin-right: 10px;
+  height: 25px;
+  line-height: 18.998px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=ReadMore.css.map */

@@ -1,0 +1,20 @@
+diff --git a/node_modules/bootstrap/scss/_reboot.scss b/node_modules/bootstrap/scss/_reboot.scss
+index 79fedc6..ab4d322 100644
+--- a/node_modules/bootstrap/scss/_reboot.scss
++++ b/node_modules/bootstrap/scss/_reboot.scss
+@@ -247,15 +247,7 @@ sup { top: -.5em; }
+ 
+ // Links
+ 
+-a {
+-  color: $link-color;
+-  text-decoration: $link-decoration;
+ 
+-  &:hover {
+-    color: $link-hover-color;
+-    text-decoration: $link-hover-decoration;
+-  }
+-}
+ 
+ // And undo these styles for placeholder links/named anchors (without href).
+ // It would be more straightforward to just use a[href] in previous block, but that

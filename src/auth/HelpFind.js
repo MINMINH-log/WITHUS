@@ -1,13 +1,12 @@
 /*eslint-disable*/
 import React from "react";
-import styled from "styled-components";
 import { Link } from "react-router-dom";
 import "../css/AuthForm.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { faUser, faLock, faAt } from "@fortawesome/free-solid-svg-icons";
 
-const HelpFind = ({ type, form, onChange, onSubmit }) => {
+const HelpFind = ({ type, onChange, onSubmit }) => {
   return (
     <div className="authform-block">
       <form onSubmit={onSubmit}>
@@ -21,7 +20,6 @@ const HelpFind = ({ type, form, onChange, onSubmit }) => {
             name="name"
             placeholder="이름"
             onChange={onChange}
-            value={form.name}
           />
         </div>
 
@@ -37,7 +35,6 @@ const HelpFind = ({ type, form, onChange, onSubmit }) => {
               placeholder="아이디"
               type="id"
               onChange={onChange}
-              value={form.id}
             />
           </div>
         )}
@@ -52,7 +49,6 @@ const HelpFind = ({ type, form, onChange, onSubmit }) => {
             placeholder="이메일"
             type="email"
             onChange={onChange}
-            value={form.email}
           />
         </div>
 

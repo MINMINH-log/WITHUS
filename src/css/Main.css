@@ -1,6 +1,22 @@
 body {
   font-size: 12px;
 }
+body .container {
+  max-width: 1210px;
+  min-width: 1210px;
+  margin: 0 auto;
+  padding: 20px 30px;
+}
+body .container .container-left {
+  width: 800px;
+  display: inline-block;
+  margin-right: 50px;
+}
+body .container .container-right {
+  width: 300px;
+  display: inline-block;
+  position: absolute;
+}
 
 .nav-item {
   font-size: 14px;
@@ -13,29 +29,6 @@ body {
   border-bottom: 2px solid #767676;
   margin-bottom: 7px;
   padding-left: 7px;
-}
-
-.container {
-  position: relative;
-  width: 1130px;
-  margin: 0 auto;
-  padding: 20px 30px;
-  overflow: hidden;
-}
-
-.container-left {
-  position: relative;
-  width: 800px;
-  float: left;
-  padding-right: 20px;
-  overflow: hidden;
-}
-
-.container-right {
-  position: relative;
-  width: 300px;
-  float: right;
-  overflow: hidden;
 }
 
 /*# sourceMappingURL=Main.css.map */

@@ -1,15 +1,26 @@
 /*eslint-disable*/
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faThumbsUp, faThumbsDown } from "@fortawesome/free-regular-svg-icons";
+import {
+  faThumbsUp,
+  faThumbsDown,
+  faHeart,
+} from "@fortawesome/free-regular-svg-icons";
+
 import { useParams } from "react-router-dom";
 import "../css/ReadMore.css";
 import { BsThreeDotsVertical } from "react-icons/bs";
-import createBulkContents from "../bulkContents";
-const ReadMore = () => {
-  let [comment, setComment] = useState(createBulkContents({ type: "댓글" }));
+import createBulkContents from "../DB/bulkContents";
+import useToggleHeart from "../useToggleHeart";
+import { useHomeData } from "../DB/data.js";
 
-  const { src, writer, id } = useParams();
+const ReadMore = () => {
+  const homeData = useHomeData();
+  console.log(homeData[0]);
+
+  let [comment, setComment] = useState(createBulkContents({ type: "댓글" }));
+  const params = useParams();
+  const [post, setPost] = useState({});
   const [popup, setPopup] = useState(false);
   const onToggle = () => {
     setPopup(!popup);
@@ -17,11 +28,11 @@ const ReadMore = () => {
   return (
     <>
       <section className="sm-top">
-        <div className="board">일상 게시판</div>
+        <div className="board">일상게시판</div>
         <h1 className="title">오늘 날씨 미침</h1>
         <div className="title-footer">
           <div className="writer">
-            <span className="writer-name">죽을사학년</span>
+            <span className="writer-name">박효민</span>
             <span className="writer-time">2021-07-30 13:20</span>
           </div>
           <div className="response">
@@ -111,7 +122,13 @@ const ReadMore = () => {
                 <p className="contents">{c.prgp}</p>
                 <div className="time">{c.time}</div>
                 <div className="func">
-                  <span className="like">좋아요</span>
+                  <span className="like">
+                    <span className="icon">
+                      <FontAwesomeIcon icon={faHeart} />
+                    </span>
+                    <span className="text">좋아요</span>
+                    <span className="count">19</span>
+                  </span>
                   <span className="reply">답글</span>
                   <span className="message">쪽지</span>
                 </div>

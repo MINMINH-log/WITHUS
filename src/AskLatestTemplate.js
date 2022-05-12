@@ -1,13 +1,14 @@
 import React, { useState, useCallback } from "react";
 import "../src/css/AskComponent.css";
+import { useInfoData } from "DB/data";
 
-const AskLatestTemplate = ({
-  firstContents,
-  secondContents,
-  thirdContents,
-  lastContents,
-  categories,
-}) => {
+const AskLatestTemplate = ({ categories }) => {
+  const [
+    [promoteJoinClub, setPromoteJoinClub],
+    [promoteJoinStudy, setPromoteJoinStudy],
+    [promoteJoinProject, setPromoteJoinProject],
+    [promoteJoinCompetition, setPromoteCompetition],
+  ] = useInfoData();
   const [selectLatestBlockCategory, setLatestBlockCategory] = useState(
     categories[0]["name"]
   );
@@ -38,13 +39,13 @@ const AskLatestTemplate = ({
     let latestblockContentsSelected = [];
     const showLatestBlockSelected = () => {
       if (selectLatestBlockCategory === categories[0]["name"]) {
-        latestblockContentsSelected = [...firstContents];
+        latestblockContentsSelected = [...promoteJoinClub];
       } else if (selectLatestBlockCategory === categories[1]["name"]) {
-        latestblockContentsSelected = [...secondContents];
+        latestblockContentsSelected = [...promoteJoinStudy];
       } else if (selectLatestBlockCategory === categories[2]["name"]) {
-        latestblockContentsSelected = [...thirdContents];
+        latestblockContentsSelected = [...promoteJoinProject];
       } else if (selectLatestBlockCategory === categories[3]["name"]) {
-        latestblockContentsSelected = [...lastContents];
+        latestblockContentsSelected = [...promoteJoinCompetition];
       }
     };
     return (

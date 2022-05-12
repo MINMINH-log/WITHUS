@@ -1,37 +1,59 @@
 /*eslint-disable*/
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { changeField, initializeForm } from "../modules/auth";
+import React, { useState, useEffect } from "react";
 import AuthForm from "./AuthForm";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+} from "firebase/auth";
+import { authService } from "fbase";
+import { useNavigate } from "react-router-dom";
 
 const RegisterForm = () => {
-  const dispatch = useDispatch();
-  const { form } = useSelector(({ auth }) => ({ form: auth.register }));
+  const navigate = useNavigate();
 
-  const onChange = (e) => {
-    const { value, name } = e.target;
-    dispatch(
-      changeField({
-        form: "register",
-        key: name,
-        value,
-      })
-    );
-  };
-
-  const onSubmit = (e) => {
-    e.preventDefault();
-  };
-
+  // firebase auth
   useEffect(() => {
-    dispatch(initializeForm("register"));
-  }, [dispatch]);
+    onAuthStateChanged(authService, (user) => {
+      if (user) {
+        navigate("/", { state: user.uid });
+      }
+    });
+  }, []);
+  // 회원가입
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errorMsg, setErrorMsg] = useState("");
+  let data;
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const auth = getAuth();
+
+      data = await createUserWithEmailAndPassword(auth, email, password);
+    } catch (error) {
+      setErrorMsg(error.message);
+    }
+  };
+  const onChange = (e) => {
+    const {
+      target: { value, name },
+    } = e;
+
+    if (name === "email") {
+      setEmail(value);
+    } else if (name === "password") {
+      setPassword(value);
+    }
+  };
   return (
     <AuthForm
-      type="register"
-      form={form}
       onChange={onChange}
       onSubmit={onSubmit}
+      email={email}
+      password={password}
+      type="register"
+      errorMsg={errorMsg}
     />
   );
 };

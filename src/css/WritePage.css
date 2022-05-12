@@ -1,0 +1,60 @@
+.editor {
+  max-width: 860px;
+  margin: 18px auto 18px;
+  padding-bottom: 26px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+.editor .title,
+.editor .content {
+  display: block;
+  width: 100%;
+  outline: none;
+  border: none;
+}
+.editor .title {
+  height: 100px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  font-size: 20px;
+}
+.editor .content {
+  min-height: 230px;
+  padding: 10px;
+}
+.editor .photo-editor .item {
+  display: inline-block;
+}
+.editor .photo-editor .item .clear {
+  position: relative;
+  right: 17px;
+  top: -43px;
+  outline: none;
+  border: 1px solid #c4c4c4;
+  padding: 0px 2px;
+}
+.editor .photo-editor .submit {
+  display: block;
+}
+.editor .bottom-bar {
+  display: flex;
+  justify-content: center;
+}
+.editor .bottom-bar .error-msg {
+  color: red;
+  padding: 5px 0px;
+}
+.editor .bottom-bar .submit {
+  outline: none;
+  border: 1.4px solid #f2cc4d;
+  padding: 5px 15px;
+  margin-left: 10px;
+  background-color: #ffffff;
+  color: #f2cc4d;
+  font-weight: 400;
+  border-radius: 7%;
+}
+.editor .bottom-bar .submit:hover {
+  color: #ffffff;
+  background-color: #f2cc4d;
+}
+
+/*# sourceMappingURL=WritePage.css.map */

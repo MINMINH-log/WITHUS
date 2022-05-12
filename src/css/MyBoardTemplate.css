@@ -14,36 +14,36 @@
   box-sizing: border-box;
   cursor: pointer;
 }
-
-.my-box .box-items ::after {
+.my-box .my-box .box-items {
+  padding-left: 0;
+  overflow: hidden;
+}
+.my-box .my-box .box-items ::after {
   content: "";
   display: table;
   clear: both;
   table-layout: fixed;
 }
-
 .my-box .box-items {
-  padding-left: 0;
-  overflow: hidden;
-}
-
-.box-items {
   margin: 0;
+  padding: 0;
 }
-
-.box-item {
+.my-box .box-items .box-item {
   padding: 15px;
   border-bottom: 0.5px #e0e0e0 solid;
   color: #787878;
+  list-style: none;
 }
-
-.box-item:last-child {
+.my-box .box-items .box-item :last-child {
   border-bottom: none;
 }
+.my-box .box-items .box-item .box-item-icon {
+  font-size: 12px;
+}
 
-.box-item-i,
-.fav-i,
-.latest-i {
+.box-item-icon,
+.fav-icon,
+.latest-icon {
   padding-right: 10px;
 }
 

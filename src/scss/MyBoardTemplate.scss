@@ -13,36 +13,39 @@
   -ms-box-sizing: border-box;
   box-sizing: border-box;
   cursor: pointer;
-}
-.my-box .box-items ::after {
-  content: '';
-  display: table;
-  clear: both;
-  table-layout: fixed;
+
+  .my-box .box-items {
+    padding-left: 0;
+    overflow: hidden;
+    ::after {
+      content: "";
+      display: table;
+      clear: both;
+      table-layout: fixed;
+    }
+  }
+
+  .box-items {
+    margin: 0;
+    padding: 0;
+    .box-item {
+      padding: 15px;
+      border-bottom: 0.5px #e0e0e0 solid;
+      color: #787878;
+      list-style: none;
+      :last-child {
+        border-bottom: none;
+      }
+      .box-item-icon {
+        font-size: 12px;
+      }
+    }
+  }
 }
 
-.my-box .box-items {
-  padding-left: 0;
-  overflow: hidden;
-}
-
-.box-items {
-  margin: 0;
-}
-
-.box-item {
-  padding: 15px;
-  border-bottom: 0.5px #e0e0e0 solid;
-  color: #787878;
-}
-
-.box-item:last-child {
-  border-bottom: none;
-}
-
-.box-item-i,
-.fav-i,
-.latest-i {
+.box-item-icon,
+.fav-icon,
+.latest-icon {
   padding-right: 10px;
 }
 

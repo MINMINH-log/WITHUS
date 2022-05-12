@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":["../scss/HotBoardTemplate.scss"],"names":[],"mappings":"AAAA;EACE;;;AAEF;EACE;EACA;;;AAEF;EACE;EACA;EACA;;;AAGF;EACE;;;AAGF;EACE;EACA;EAEA;EACA;EACA;EACA;EACA;EACA;;;AAGF;EACE;EACA;EACA;EACA;EACA;EACA;;;AAGF;AAAA;AAAA;EAGE","file":"HotBoardTemplate.css"}
+{"version":3,"sourceRoot":"","sources":["../scss/HotBoardTemplate.scss"],"names":[],"mappings":"AAAA;EACE;;AACA;EACE;EACA;;AAEF;EACE;EACA;EACA;;AACA;EACE;;AACA;EACE;EACA;EACA;;AAEF;EACE;EACA;;AACA;EACE;EACA","file":"HotBoardTemplate.css"}

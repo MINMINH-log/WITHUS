@@ -5,37 +5,53 @@ import { faHeart as fullHeart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "../node_modules/@fortawesome/react-fontawesome/index";
 
 const useToggleHeart = (content, setContent) => {
-  const toggleHeart = (i) => {
-    if (content[i].likeClicked) {
-      setContent([
-        ...content,
-        ((content[i].likeClicked = false),
-        (content[i].like = content[i].like - 1)),
-      ]);
+  const toggleHeart = (index) => {
+    if (content[index].likeClicked) {
+      setContent((prev) =>
+        prev.map((c, i) =>
+          i === index ? { ...c, likeClicked: false, like: c.like - 1 } : c
+        )
+      );
     } else {
-      setContent([
-        ...content,
-        ((content[i].likeClicked = true),
-        (content[i].like = content[i].like + 1)),
-      ]);
+      setContent((prev) =>
+        prev.map((c, i) =>
+          i === index ? { ...c, likeClicked: true, like: c.like + 1 } : c
+        )
+      );
     }
-
-    console.log(content);
   };
 
-  const toggleCommentHeart = (i) => {
-    if (content[i].commentInfo.likeClicked) {
-      setContent([
-        ...content,
-        ((content[i].commentInfo.likeClicked = false),
-        (content[i].commentInfo.like = content[i].commentInfo.like - 1)),
-      ]);
+  const toggleCommentHeart = (index) => {
+    if (content[index].commentInfo.likeClicked) {
+      setContent((prev) =>
+        prev.map((c, i) =>
+          i === index
+            ? {
+                ...c,
+                commentInfo: {
+                  ...c.commentInfo,
+                  likeClicked: false,
+                  like: like - 1,
+                },
+              }
+            : c
+        )
+      );
     } else {
-      setContent([
-        ...content,
-        ((content[i].commentInfo.likeClicked = true),
-        (content[i].commentInfo.like = content[i].commentInfo.like + 1)),
-      ]);
+      setContent((prev) =>
+        prev.map((c, i) =>
+          i === index
+            ? {
+                ...c,
+                commentInfo: {
+                  ...c.commentInfo,
+                  likeClicked: true,
+                  like: like + 1,
+                },
+              }
+            : c
+        )
+      );
     }
   };
 

@@ -6,13 +6,13 @@ import { faHeart, faImage, faEdit } from "@fortawesome/free-regular-svg-icons";
 import { Link } from "react-router-dom";
 import useToggleHeart from "./useToggleHeart";
 import { faHeart as fullHeart } from "@fortawesome/free-solid-svg-icons";
+import { useMajorData } from "DB/data";
 
-const LatestHotListTemplate = ({
-  latestContents,
-  setLatestContents,
-  hotContents,
-  setHotContents,
-}) => {
+const LatestHotListTemplate = () => {
+  const [
+    [majorLatestContents, setMajorLatestContents],
+    [majorHotContents, setMajorHotContents],
+  ] = useMajorData();
   const majorCategories = [
     { name: "latest", text: "최근 게시글" },
     { name: "hot", text: "인기글" },
@@ -51,17 +51,17 @@ const LatestHotListTemplate = ({
     );
   };
 
-  let majorContentsSelected = latestContents;
-  let setMajorContentsSelected = setLatestContents;
+  let majorContentsSelected = majorLatestContents;
+  let setMajorContentsSelected = setMajorLatestContents;
 
   const selectMajorCategoryFunc = () => {
     if (selectMajorCategory === "latest") {
-      (majorContentsSelected = latestContents),
-        (setMajorContentsSelected = setLatestContents);
+      (majorContentsSelected = majorLatestContents),
+        (setMajorContentsSelected = setMajorLatestContents);
       console.log(selectMajorCategory);
     } else if (selectMajorCategory === "hot") {
-      (majorContentsSelected = hotContents),
-        (setMajorContentsSelected = setHotContents);
+      (majorContentsSelected = majorHotContents),
+        (setMajorContentsSelected = setMajorHotContents);
       console.log(selectMajorCategory);
     }
   };

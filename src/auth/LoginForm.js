@@ -1,37 +1,65 @@
 /*eslint-disable*/
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { changeField, initializeForm } from "../modules/auth";
+import React, { useState, useEffect } from "react";
 import AuthForm from "./AuthForm";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+  onAuthStateChanged,
+} from "firebase/auth";
+import { useNavigate } from "react-router-dom";
+import { authService } from "fbase";
 
 const LoginForm = () => {
-  const dispatch = useDispatch();
-  const { form } = useSelector(({ auth }) => ({ form: auth.login }));
+  const navigate = useNavigate();
 
-  const onChange = (e) => {
-    const { value, name } = e.target;
-    dispatch(
-      changeField({
-        form: "login",
-        key: name,
-        value,
-      })
-    );
-  };
-
-  const onSubmit = (e) => {
-    e.preventDefault();
-  };
-
+  // firebase auth
   useEffect(() => {
-    dispatch(initializeForm("login"));
-  }, [dispatch]);
+    onAuthStateChanged(authService, (user) => {
+      if (user) {
+        console.log(user);
+        navigate("/", { state: user.uid });
+      }
+    });
+  }, []);
+
+  // 로그인
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errorMsg, setErrorMsg] = useState("");
+  const onChange = (e) => {
+    const {
+      target: { value, name },
+    } = e;
+
+    if (name === "email") {
+      setEmail(value);
+    } else if (name === "password") {
+      setPassword(value);
+    }
+  };
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    let data;
+    try {
+      const auth = getAuth();
+      data = await signInWithEmailAndPassword(auth, email, password);
+    } catch (error) {
+      setErrorMsg(error.message);
+    }
+  };
+
   return (
     <AuthForm
-      type="login"
-      form={form}
       onChange={onChange}
       onSubmit={onSubmit}
+      email={email}
+      password={password}
+      type="login"
+      errorMsg={errorMsg}
     />
   );
 };

@@ -5,28 +5,19 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import { faHeart as fullHeart } from "@fortawesome/free-solid-svg-icons";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import createBulkContents from "./bulkContents";
+import createBulkContents from "./DB/bulkContents";
 import useToggleHeart from "./useToggleHeart";
+import { useClassfiedData } from "DB/data";
 
 const HotClassifiedTemplate = () => {
-  let [classifiedFree, setClassifiedFree] = useState(
-    createBulkContents({ type: "자유" })
-  );
-  let [classifiedTheme, setClassifiedTheme] = useState(
-    createBulkContents({ type: "테마" })
-  );
-  let [classifiedAsk, setClassifiedAsk] = useState(
-    createBulkContents({ type: "질문" })
-  );
-  let [classifiedSurvey, setClassifiedSurvey] = useState(
-    createBulkContents({ type: "설문" })
-  );
-  let [classifiedInfo, setClassifiedInfo] = useState(
-    createBulkContents({ type: "정보" })
-  );
-  let [classifiedPromote, setClassifiedPromote] = useState(
-    createBulkContents({ type: "홍보" })
-  );
+  const [
+    [classifiedFree, setClassifiedFree],
+    [classifiedTheme, setClassifiedTheme],
+    [classifiedAsk, setClassifiedAsk],
+    [classifiedSurvey, setClassifiedSurvey],
+    [classifiedInfo, setClassifiedInfo],
+    [classifiedPromote, setClassifiedPromote],
+  ] = useClassfiedData();
 
   const ClassifiedComponent = ({
     contents,

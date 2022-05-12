@@ -175,7 +175,9 @@
         }
         .func {
           overflow: hidden;
-          height: 29px;
+          height: 25px;
+          display: flex;
+          margin: 10px 0;
           .like,
           .reply,
           .message {
@@ -183,6 +185,13 @@
             color: rgb(128, 128, 128);
             padding: 2px 10px;
             margin-right: 10px;
+            height: 25px;
+            line-height: 18.998px;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            -ms-box-sizing: border-box;
+            box-sizing: border-box;
+            cursor: pointer;
           }
         }
       }

@@ -14,8 +14,19 @@ const HotComponent = ({
   categorySelected,
   setCategorySelected,
 }) => {
-  const { id, writer, img, prgp, src, time, like, commentInfo, likeClicked } =
-    content;
+  const {
+    id,
+    writer,
+    title,
+    img,
+    prgp,
+    src,
+    time,
+    like,
+    commentInfo,
+    likeClicked,
+  } = content;
+
   const contentIndex = startIndex + order;
   const { toggleHeart } = useToggleHeart(categorySelected, setCategorySelected);
 
@@ -29,7 +40,7 @@ const HotComponent = ({
       </div>
 
       <div className="hot-noimg-part">
-        <Link to={`/readmore`}>
+        <Link to={`/${src}/${title}/${id}`}>
           <p className="hot-description">{prgp}</p>
         </Link>
 

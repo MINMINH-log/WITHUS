@@ -10,17 +10,16 @@ import "../src/css/HotContents.css";
 import "../src/css/HotContents.css";
 import "../src/css/heartFuc.css";
 import HotComponent from "./HotComponent";
+import { useHomeData } from "./DB/data.js";
 
-const HotTemplate = ({
-  timeContent,
-  setTimeContent,
-  dayContent,
-  setDayContent,
-  weekContent,
-  setWeekContent,
-  monthContent,
-  setMonthContent,
-}) => {
+const HotTemplate = () => {
+  const [
+    [homeTimeContent, setHomeTimeContent],
+    [homeDayContent, setHomeDayContent],
+    [homeWeekContent, setHomeWeekContent],
+    [homeMonthContent, setHomeMonthContent],
+  ] = useHomeData();
+
   const categories = [
     { name: "time", text: "실시간 인기글" },
     { name: "day", text: "일간 인기글" },
@@ -96,19 +95,20 @@ const HotTemplate = ({
     );
   };
   // category에 맞는 list
-  let categorySelected = timeContent;
-  let setCategorySelected = setTimeContent;
+  let categorySelected = homeTimeContent;
+  let setCategorySelected = setHomeTimeContent;
   const selectCategoryFunc = () => {
     selectCategory === "time"
-      ? ((categorySelected = timeContent),
-        (setCategorySelected = setTimeContent))
+      ? ((categorySelected = homeTimeContent),
+        (setCategorySelected = setHomeTimeContent))
       : selectCategory === "day"
-      ? ((categorySelected = dayContent), (setCategorySelected = setDayContent))
+      ? ((categorySelected = homeDayContent),
+        (setCategorySelected = setHomeDayContent))
       : selectCategory === "week"
-      ? ((categorySelected = weekContent),
-        (setCategorySelected = setWeekContent))
-      : ((categorySelected = monthContent),
-        (setCategorySelected = setMonthContent));
+      ? ((categorySelected = homeWeekContent),
+        (setCategorySelected = setHomeWeekContent))
+      : ((categorySelected = homeMonthContent),
+        (setCategorySelected = setHomeMonthContent));
   };
 
   return (
@@ -119,8 +119,8 @@ const HotTemplate = ({
         {categorySelected.slice(startIndex, startIndex + 10).map((c, i) => (
           <HotComponent
             content={c}
-            categorySelected={categorySelected}
             setCategorySelected={setCategorySelected}
+            categorySelected={categorySelected}
             order={i}
             key={i}
             startIndex={startIndex}

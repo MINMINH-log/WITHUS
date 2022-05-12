@@ -1,4 +1,6 @@
-.login {
+// 비로그인
+.login,
+.user {
   background-color: #f4f4f8;
   border: 0.5px #c4c4c4 solid;
   margin-top: 10px;
@@ -36,4 +38,21 @@
 
 .signup {
   cursor: pointer;
+}
+
+// 로그인
+.user {
+  .photo {
+    width: 70px;
+    height: 70px;
+    border-radius: 100%;
+    margin: 10px;
+  }
+  .login-bottom-wrap {
+    button {
+      outline: none;
+      border: none;
+      background-color: #f4f4f8;
+    }
+  }
 }

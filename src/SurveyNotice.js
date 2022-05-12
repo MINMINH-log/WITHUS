@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import "../src/css/SurveyNotice.css";
 import Carousel from "react-spring-3d-carousel-2";
 import { config } from "react-spring";
-import createBulkContents from "./bulkContents";
+import createBulkContents from "./DB/bulkContents";
 
 const CenterMode = () => {
   let [noticeSurvey, setNoticeSurvey] = useState(
@@ -12,7 +12,7 @@ const CenterMode = () => {
 
   let slides = [
     {
-      key: "{noticeSurvey[0]['id']}",
+      key: `${noticeSurvey[0]["id"]}`,
       content: (
         <li className="survey-notice-list">
           <div className="survey-notice-src">
@@ -28,7 +28,7 @@ const CenterMode = () => {
       ),
     },
     {
-      key: "{noticeSurvey[1]['id']}",
+      key: `${noticeSurvey[1]["id"]}`,
       content: (
         <li className="survey-notice-list">
           <div className="survey-notice-src">
@@ -44,7 +44,7 @@ const CenterMode = () => {
       ),
     },
     {
-      key: "{noticeSurvey[2]['id']}",
+      key: `${noticeSurvey[2]["id"]}`,
       content: (
         <li className="survey-notice-list">
           <div className="survey-notice-src">
@@ -60,7 +60,7 @@ const CenterMode = () => {
       ),
     },
     {
-      key: "{noticeSurvey[3]['id']}",
+      key: `${noticeSurvey[3]["id"]}`,
       content: (
         <li className="survey-notice-list">
           <div className="survey-notice-src">
@@ -76,7 +76,7 @@ const CenterMode = () => {
       ),
     },
     {
-      key: "{noticeSurvey[4]['id']}",
+      key: `${noticeSurvey[4]["id"]}`,
       content: (
         <li className="survey-notice-list">
           <div className="survey-notice-src">
@@ -92,7 +92,7 @@ const CenterMode = () => {
       ),
     },
     {
-      key: "{noticeSurvey[5]['id']}",
+      key: `${noticeSurvey[5]["id"]}`,
       content: (
         <li className="survey-notice-list">
           <div className="survey-notice-src">
@@ -108,7 +108,7 @@ const CenterMode = () => {
       ),
     },
     {
-      key: "{noticeSurvey[6]['id']}",
+      key: `${noticeSurvey[6]["id"]}`,
       content: (
         <li className="survey-notice-list">
           <div className="survey-notice-src">
@@ -124,7 +124,7 @@ const CenterMode = () => {
       ),
     },
     {
-      key: "{noticeSurvey[7]['id']}",
+      key: `${noticeSurvey[7]["id"]}`,
       content: (
         <li className="survey-notice-list">
           <div className="survey-notice-src">
@@ -140,7 +140,7 @@ const CenterMode = () => {
       ),
     },
     {
-      key: "{noticeSurvey[8]['id']}",
+      key: `${noticeSurvey[8]["id"]}`,
       content: (
         <li className="survey-notice-list">
           <div className="survey-notice-src">
@@ -156,7 +156,7 @@ const CenterMode = () => {
       ),
     },
     {
-      key: "{noticeSurvey[9]['id']}",
+      key: `${noticeSurvey[9]["id"]}`,
       content: (
         <li className="survey-notice-list">
           <div className="survey-notice-src">

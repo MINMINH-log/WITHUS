@@ -1,11 +1,10 @@
 /* eslint-disable*/
 import React, { useState, useEffect, useCallback } from "react";
 import "mapbox-gl/dist/mapbox-gl.css";
-import "../src/css/PromoteTemplate.css";
+import "css/PromoteTemplate.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import "../src/css/header.css";
-import "./AskComponent";
+import "css/header.css";
 import "mapbox-gl/dist/mapbox-gl.css";
 import ReactMapGL, {
   NavigationControl,
@@ -13,10 +12,12 @@ import ReactMapGL, {
   Marker,
   Popup,
 } from "react-map-gl";
-import AskLatestTemplate from "./AskLatestTemplate";
-import createBulkContents from "./bulkContents";
+import AskLatestTemplate from "AskLatestTemplate";
+import { useInfoData } from "DB/data";
+import { useLocation } from "react-router-dom";
+import Template from "Template";
 
-const PromoteTemplate = () => {
+const Promote = () => {
   const promoteJoinCategories = [
     { name: "club", text: "동아리" },
     { name: "study", text: "스터디" },
@@ -24,18 +25,7 @@ const PromoteTemplate = () => {
     { name: "competition", text: "공모전" },
   ];
   const [selectPromoteJoinCategory, setPromoteJoinCategory] = useState("club");
-  let [promoteJoinClub, setPromoteJoinClub] = useState(
-    createBulkContents({ type: "동아리 홍보" })
-  );
-  let [promoteJoinStudy, setPromoteJoinStudy] = useState(
-    createBulkContents({ type: "스터디 홍보" })
-  );
-  let [promoteJoinProject, setPromoteJoinProject] = useState(
-    createBulkContents({ type: "프로젝트 홍보" })
-  );
-  let [promoteJoinCompetition, setPromoteCompetition] = useState(
-    createBulkContents({ type: "공모전 홍보" })
-  );
+
   const [areaArray, setAreaArray] = useState([
     "서울",
     "경기",
@@ -204,9 +194,9 @@ const PromoteTemplate = () => {
       </ul>
     );
   };
-
+  const { state } = useLocation();
   return (
-    <>
+    <Template user={state}>
       <div className="title"> 학교 이모저모</div>
       <section className="promote-univ">
         <Area />
@@ -220,16 +210,10 @@ const PromoteTemplate = () => {
       <div className="univ-img"></div>
       <section className="promote-join">
         <div className="title">팀원모집</div>
-        <AskLatestTemplate
-          firstContents={promoteJoinClub}
-          secondContents={promoteJoinStudy}
-          thirdContents={promoteJoinProject}
-          lastContents={promoteJoinCompetition}
-          categories={promoteJoinCategories}
-        />
+        <AskLatestTemplate categories={promoteJoinCategories} />
       </section>
-    </>
+    </Template>
   );
 };
 
-export default PromoteTemplate;
+export default Promote;

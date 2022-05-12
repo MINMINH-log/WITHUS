@@ -1,6 +1,6 @@
-function createBulkContents({ type }) {
+function createBulkContents({ type, startNum = 0 }) {
   const array = [];
-  for (let i = 1; i <= 40; i++) {
+  for (let i = startNum; i < startNum + 40; i++) {
     array.push({
       id: i,
       writer: "박효민",

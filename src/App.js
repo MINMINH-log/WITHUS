@@ -23,47 +23,55 @@ import WritePage from "write/WritePage";
 const App = () => {
   const [userDb, setUserDb] = useState(null);
   const [sampleProfilePhoto, setSampleProfilePhoto] = useState("");
-  const getSampleProfilePhoto = async () => {
-    await getDownloadURL(ref(storageService, "withus_empty.jpg"))
-      .then((response) => {
+  const [Init, setInit] = useState(false);
+
+  const downloadSamplePhoto = async () => {
+    await getDownloadURL(ref(storageService, "withus_empty.jpg")).then(
+      (response) => {
         setSampleProfilePhoto(response);
-      })
-      .then(() => {
-        onAuthStateChanged(authService, (user) => {
-          if (user) {
-            if (user.displayName === null) {
-              updateProfile(user, {
-                displayName: user.email.split("@")[0],
-              });
-            }
-            if (user.photoURL === null) {
-              updateProfile(user, {
-                photoURL: sampleProfilePhoto,
-              });
-            }
-            setUserDb({
-              uid: user.uid,
-              displayName: user.displayName,
-              photoURL: user.photoURL,
-            });
-          }
-        });
-      });
+      }
+    );
   };
 
-  // setUserDb
+  useEffect(() => downloadSamplePhoto(), []);
+
+  const authStateChanged = async () => {
+    onAuthStateChanged(authService, (user) => {
+      if (user) {
+        if (user.displayName === null) {
+          updateProfile(user, {
+            displayName: user.email.split("@")[0],
+          });
+        }
+        if (user.photoURL === null) {
+          updateProfile(user, {
+            photoURL: sampleProfilePhoto,
+          });
+        }
+        setUserDb({
+          displayName: user.displayName,
+          uid: user.uid,
+          photoURL: user.photoURL,
+        });
+      }
+    });
+  };
+
   useEffect(() => {
-    getSampleProfilePhoto();
+    authStateChanged();
   }, []);
 
   // userDb refresh
   const refreshUser = () => {
-    const user = authService.currentUser;
-    setUserDb({
-      uid: user.uid,
-      displayName: user.displayName,
+    onAuthStateChanged(authService, (user) => {
+      setUserDb({
+        displayName: user.displayName,
+        uid: user.uid,
+        photoURL: user.photoURL,
+      });
     });
   };
+  console.log(userDb, setUserDb);
   return (
     <>
       <NavbarComponent />

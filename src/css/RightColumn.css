@@ -1,0 +1,157 @@
+.my-box,
+.fav-nav,
+.latest-nav {
+  background-color: #f4f4f8;
+  border: 0.5px #c4c4c4 solid;
+  margin-top: 15px;
+}
+
+.my-box {
+  width: 100%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+.my-box .my-box .box-items {
+  padding-left: 0;
+  overflow: hidden;
+}
+.my-box .my-box .box-items ::after {
+  content: "";
+  display: table;
+  clear: both;
+  table-layout: fixed;
+}
+.my-box .box-items {
+  margin: 0;
+  padding: 0;
+  color: #787878;
+}
+.my-box .box-items[active=true] {
+  color: #212529;
+}
+.my-box .box-items .box-item {
+  padding: 15px;
+  border-bottom: 0.5px #e0e0e0 solid;
+  list-style: none;
+}
+.my-box .box-items .box-item:last-child {
+  border-bottom: none;
+}
+.my-box .box-items .box-item .box-item-icon {
+  font-size: 12px;
+}
+
+.box-item-icon,
+.fav-icon,
+.latest-icon {
+  padding-right: 10px;
+}
+
+/* mybox */
+/* favoriteBoard */
+.fav .fav-nav,
+.fav .latest-nav,
+.latest .fav-nav,
+.latest .latest-nav {
+  padding: 15px;
+  overflow: hidden;
+  color: #787878;
+}
+.fav .fav-nav[active=true],
+.fav .latest-nav[active=true],
+.latest .fav-nav[active=true],
+.latest .latest-nav[active=true] {
+  color: #212529;
+}
+.fav .fav-nav .dropdown,
+.fav .latest-nav .dropdown,
+.latest .fav-nav .dropdown,
+.latest .latest-nav .dropdown {
+  cursor: pointer;
+}
+.fav .fav-nav .fav-title,
+.fav .fav-nav .latest-title,
+.fav .latest-nav .fav-title,
+.fav .latest-nav .latest-title,
+.latest .fav-nav .fav-title,
+.latest .fav-nav .latest-title,
+.latest .latest-nav .fav-title,
+.latest .latest-nav .latest-title {
+  padding-right: 5px;
+}
+.fav .fav-wrap[active=false],
+.fav .latest-wrap[active=false],
+.latest .fav-wrap[active=false],
+.latest .latest-wrap[active=false] {
+  display: none;
+}
+.fav .fav-wrap .fav-items,
+.fav .fav-wrap .latest-items,
+.fav .latest-wrap .fav-items,
+.fav .latest-wrap .latest-items,
+.latest .fav-wrap .fav-items,
+.latest .fav-wrap .latest-items,
+.latest .latest-wrap .fav-items,
+.latest .latest-wrap .latest-items {
+  padding: 0;
+}
+.fav .fav-wrap .fav-items .fav-item,
+.fav .fav-wrap .fav-items .latest-item,
+.fav .fav-wrap .latest-items .fav-item,
+.fav .fav-wrap .latest-items .latest-item,
+.fav .latest-wrap .fav-items .fav-item,
+.fav .latest-wrap .fav-items .latest-item,
+.fav .latest-wrap .latest-items .fav-item,
+.fav .latest-wrap .latest-items .latest-item,
+.latest .fav-wrap .fav-items .fav-item,
+.latest .fav-wrap .fav-items .latest-item,
+.latest .fav-wrap .latest-items .fav-item,
+.latest .fav-wrap .latest-items .latest-item,
+.latest .latest-wrap .fav-items .fav-item,
+.latest .latest-wrap .fav-items .latest-item,
+.latest .latest-wrap .latest-items .fav-item,
+.latest .latest-wrap .latest-items .latest-item {
+  list-style-type: none;
+  border: 0.5px #c4c4c4 solid;
+  border-bottom: 0.5px #e0e0e0 solid;
+  border-top: none;
+  padding: 15px;
+  border-bottom: 0.5px #e0e0e0 solid;
+  width: 100%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+.fav .fav-wrap .fav-items .fav-item:last-child,
+.fav .fav-wrap .fav-items .latest-item:last-child,
+.fav .fav-wrap .latest-items .fav-item:last-child,
+.fav .fav-wrap .latest-items .latest-item:last-child,
+.fav .latest-wrap .fav-items .fav-item:last-child,
+.fav .latest-wrap .fav-items .latest-item:last-child,
+.fav .latest-wrap .latest-items .fav-item:last-child,
+.fav .latest-wrap .latest-items .latest-item:last-child,
+.latest .fav-wrap .fav-items .fav-item:last-child,
+.latest .fav-wrap .fav-items .latest-item:last-child,
+.latest .fav-wrap .latest-items .fav-item:last-child,
+.latest .fav-wrap .latest-items .latest-item:last-child,
+.latest .latest-wrap .fav-items .fav-item:last-child,
+.latest .latest-wrap .fav-items .latest-item:last-child,
+.latest .latest-wrap .latest-items .fav-item:last-child,
+.latest .latest-wrap .latest-items .latest-item:last-child {
+  border-bottom: 0.5px #c4c4c4 solid;
+}
+
+/* favoriteBoard */
+.expandBtn {
+  width: 15px;
+  position: absolute;
+  display: inline-block;
+  right: 15px;
+}
+
+/*# sourceMappingURL=RightColumn.css.map */

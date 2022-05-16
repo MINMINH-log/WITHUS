@@ -1,6 +1,6 @@
 /* eslint-disable */
 import React, { useState } from "react";
-import "css/MyBoardTemplate.css";
+import "css/RightColumn.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faAngleDown,
@@ -36,6 +36,19 @@ const RightColumn = ({ userDb, refreshUser }) => {
     signOut(authService);
     window.location.reload(true);
     navigate("/");
+  };
+  const [favIsOpened, setFavIsOpened] = useState(false);
+  const [latestIsOpened, setLatestIsOpened] = useState(false);
+  const onToggleFavBox = () => {
+    if (userDb) {
+      setFavIsOpened((prev) => !prev);
+    }
+  };
+
+  const onToggleLatestBox = () => {
+    if (userDb) {
+      setLatestIsOpened((prev) => !prev);
+    }
   };
 
   const Login = () => {
@@ -94,7 +107,7 @@ const RightColumn = ({ userDb, refreshUser }) => {
   const MyBox = () => {
     return (
       <div className="my-box">
-        <ul className="box-items">
+        <ul className="box-items" active={userDb ? "true" : "false"}>
           {myBox.map((c) => (
             <li className="box-item" key={c.name}>
               <span className="box-item-icon">
@@ -111,12 +124,23 @@ const RightColumn = ({ userDb, refreshUser }) => {
   const FavBoard = () => {
     return (
       <div className="fav">
-        <div className="fav-nav">
+        <div className="fav-nav" active={userDb ? "true" : "false"}>
           <span className="fav-icon">
             <FontAwesomeIcon icon={faStar} />
           </span>
           <span className="fav-title">즐겨찾는 게시판</span>
-          <FontAwesomeIcon icon={faAngleDown} />
+          <span className="dropdown">
+            <FontAwesomeIcon icon={faAngleDown} onClick={onToggleFavBox} />
+          </span>
+        </div>
+        <div active={favIsOpened.toString()} className="fav-wrap">
+          <ul className="fav-items">
+            <li className="fav-item">생명공학과</li>
+            <li className="fav-item">베트남어과</li>
+            <li className="fav-item">설문게시판</li>
+            <li className="fav-item">경영학과</li>
+            <li className="fav-item">컴퓨터공학과</li>
+          </ul>
         </div>
       </div>
     );
@@ -125,12 +149,23 @@ const RightColumn = ({ userDb, refreshUser }) => {
   const Latest = () => {
     return (
       <div className="latest">
-        <div className="latest-nav">
+        <div className="latest-nav" active={userDb ? "true" : "false"}>
           <span className="latest-icon">
             <FontAwesomeIcon icon={faHistory} />
           </span>
           <span className="latest-title">최근에 방문한 게시판</span>
-          <FontAwesomeIcon icon={faAngleDown} />
+          <span className="dropdown">
+            <FontAwesomeIcon icon={faAngleDown} onClick={onToggleLatestBox} />
+          </span>
+        </div>
+        <div active={latestIsOpened.toString()} className="latest-wrap">
+          <ul className="latest-items">
+            <li className="latest-item">생명공학과</li>
+            <li className="latest-item">베트남어과</li>
+            <li className="latest-item">설문게시판</li>
+            <li className="latest-item">경영학과</li>
+            <li className="latest-item">컴퓨터공학과</li>
+          </ul>
         </div>
       </div>
     );

@@ -1,71 +1,97 @@
 /*eslint-disable*/
-import React from "react";
-import {
-  Navbar,
-  Nav,
-  Container,
-  Form,
-  FormControl,
-  Button,
-} from "react-bootstrap";
+import React, { useState } from "react";
 import withus_logo from "img/withus_logo.png";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faSearch,
+  faBars,
+  faAngleDown,
+} from "@fortawesome/free-solid-svg-icons";
 
 const NavbarComponent = () => {
+  const [navItems, setNavItems] = useState([
+    {
+      text: "홈",
+      name: "",
+    },
+    {
+      text: "학과별",
+      name: "major",
+    },
+    {
+      text: "자유",
+      name: "free",
+    },
+    {
+      text: "테마",
+      name: "theme",
+    },
+    {
+      text: "고민",
+      name: "ask",
+    },
+    {
+      text: "설문",
+      name: "survey",
+    },
+    {
+      text: "정보",
+      name: "info",
+    },
+    {
+      text: "홍보",
+      name: "promote",
+    },
+  ]);
+  const [categorySelected, setCategorySelected] = useState("");
+
+  const onClick = (event) => {
+    const {
+      target: { className },
+    } = event;
+    setCategorySelected(className.slice(8).trim());
+  };
+
   return (
-    <>
-      <Navbar bg="light" expand="lg">
-        <Container>
-          <Navbar.Brand href="/">
-            <img
-              alt=""
-              src={withus_logo}
-              width="100"
-              height="30"
-              className="d-inline-block align-top"
-            />{" "}
-          </Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-              <Nav.Link as={Link} to={"/"}>
-                홈
-              </Nav.Link>
-              <Nav.Link as={Link} to={"/Major"}>
-                학과별
-              </Nav.Link>
-              <Nav.Link as={Link} to={"/Free"}>
-                자유
-              </Nav.Link>
-              <Nav.Link as={Link} to={"/Theme"}>
-                테마
-              </Nav.Link>
-              <Nav.Link as={Link} to={"/Ask"}>
-                고민
-              </Nav.Link>
-              <Nav.Link as={Link} to={"/Survey"}>
-                설문
-              </Nav.Link>
-              <Nav.Link as={Link} to={"/Info"}>
-                정보
-              </Nav.Link>
-              <Nav.Link as={Link} to={"/Promote"}>
-                홍보
-              </Nav.Link>
-            </Nav>
-            <Form className="d-flex">
-              <FormControl
-                type="search"
-                placeholder="Search"
-                className="me-2"
-                aria-label="Search"
-              />
-              <Button variant="outline-success">Search</Button>
-            </Form>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
-    </>
+    <div className="header">
+      <div className="header-top">
+        <img className="logo" src={withus_logo} />
+        <div className="searchbox">
+          <select className="searchbox-dropdown">
+            <option>전체</option>
+            <option>학과별</option>
+            <option>자유</option>
+            <option>테마</option>
+            <option>고민</option>
+            <option>설문</option>
+            <option>정보</option>
+            <option>홍보</option>
+          </select>
+          <input className="searchbox-input"></input>
+          <span>
+            <FontAwesomeIcon icon={faSearch} />
+          </span>
+        </div>
+      </div>
+      <ul className="nav-wrap">
+        {navItems.map((c) => (
+          <Link to={c.name} key={c.name}>
+            <li
+              className={`nav-item ${c.name}`}
+              onClick={onClick}
+              aria-selected={categorySelected === c.name ? "true" : "false"}
+            >
+              {c.text}
+            </li>
+          </Link>
+        ))}
+      </ul>
+
+      <span className="show-nav">
+        <FontAwesomeIcon icon={faBars} />
+      </span>
+    </div>
   );
 };
 

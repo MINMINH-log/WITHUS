@@ -33,7 +33,7 @@ const AuthSet = ({ userDb, refreshUser }) => {
       reader.readAsDataURL(photo);
 
       if (attachment !== "") {
-        const storageRef = ref(storageService, `${userDb.uid}/photoURL.jpg`);
+        const storageRef = ref(storageService, `${userDb.uid}/${uuidv4()}.jpg`);
         await uploadString(storageRef, attachment, "data_url");
         await getDownloadURL(storageRef)
           .then((result) => setPhotoURLDownloaded(result))

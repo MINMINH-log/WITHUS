@@ -8,9 +8,8 @@ import {
   faHeart as fullHeart,
 } from "@fortawesome/free-solid-svg-icons";
 import { faHeart, faCommentAlt } from "@fortawesome/free-regular-svg-icons";
-import "../src/css/HotContents.css";
-import "../src/css/HotContents.css";
-import "../src/css/heartFuc.css";
+import "css/HotContents.css";
+import "css/heartFuc.css";
 import { useHomeData } from "./DB/data.js";
 import useToggleHeart from "./useToggleHeart";
 import { Link } from "react-router-dom";
@@ -47,10 +46,7 @@ const HotTemplate = () => {
   const [selectCategory, setCategory] = useState("time");
 
   // 다른 카테고리 클릭했을 때 카테고리 변경
-  const onSelectCategory = useCallback(
-    (current) => setCategory(current),
-    [selectCategory]
-  );
+  const onSelectCategory = (current) => setCategory(current);
 
   // category 컴포넌트
   const Categories = () => {
@@ -59,7 +55,7 @@ const HotTemplate = () => {
         {categories.map((c) => (
           <li
             key={c.name}
-            active={selectCategory === c.name ? "true" : "false"}
+            aria-selected={selectCategory === c.name ? "true" : "false"}
             onClick={() => {
               setCurrentPage(1);
               setStartIndex(0);

@@ -1,28 +1,26 @@
 body {
   font-size: 12px;
 }
-body .container {
-  max-width: 1210px;
-  min-width: 1210px;
+body .wrap {
+  display: flex;
+  width: 1210px;
+  flex-direction: column;
   margin: 0 auto;
-  padding: 20px 30px;
 }
-body .container .container-left {
-  width: 800px;
-  display: inline-block;
-  margin-right: 50px;
+body .wrap .container {
+  display: flex;
+  width: 1210px;
+  flex-direction: row;
+  margin: 0 auto;
 }
-body .container .container-right {
-  width: 300px;
-  display: inline-block;
-  position: absolute;
+body .wrap .container .container-left {
+  flex-basis: 800px;
+  margin-right: 100px;
 }
-
-.nav-item {
-  font-size: 14px;
+body .wrap .container .container-right {
+  flex-grow: 1;
 }
-
-.title {
+body .wrap .title {
   font-size: 14px;
   font-weight: bolder;
   padding-bottom: 7px;

@@ -15,65 +15,65 @@ import AuthSet from "auth/AuthSet";
 import { authService, storageService } from "fbase";
 import { ref, getDownloadURL } from "firebase/storage";
 import { onAuthStateChanged, updateProfile } from "firebase/auth";
-
-import "bootstrap/dist/css/bootstrap.min.css";
 import NavbarComponent from "Components/NavbarComponent";
 import WritePage from "write/WritePage";
+import "css/Main.css";
 
 const App = () => {
   const [userDb, setUserDb] = useState(null);
   const [sampleProfilePhoto, setSampleProfilePhoto] = useState("");
-  const [Init, setInit] = useState(false);
 
   const downloadSamplePhoto = async () => {
-    await getDownloadURL(ref(storageService, "withus_empty.jpg")).then(
-      (response) => {
-        setSampleProfilePhoto(response);
-      }
-    );
+    getDownloadURL(ref(storageService, "withus_empty.jpg")).then((response) => {
+      setSampleProfilePhoto(response);
+    });
+
+    return sampleProfilePhoto;
   };
 
-  useEffect(() => downloadSamplePhoto(), []);
+  const onSetInitValue = async (user) => {
+    if (user.displayName === null) {
+      updateProfile(user, {
+        displayName: user.email.split("@")[0],
+      });
+    }
+    if (user.photoURL === null) {
+      downloadSamplePhoto();
+      updateProfile(user, {
+        photoURL: sampleProfilePhoto,
+      });
+    }
+  };
 
   const authStateChanged = async () => {
     onAuthStateChanged(authService, (user) => {
       if (user) {
-        if (user.displayName === null) {
-          updateProfile(user, {
-            displayName: user.email.split("@")[0],
-          });
-        }
-        if (user.photoURL === null) {
-          updateProfile(user, {
-            photoURL: sampleProfilePhoto,
-          });
-        }
-        setUserDb({
-          displayName: user.displayName,
-          uid: user.uid,
-          photoURL: user.photoURL,
-        });
+        onSetInitValue(user);
       }
     });
   };
-
-  useEffect(() => {
-    authStateChanged();
-  }, []);
-
-  // userDb refresh
   const refreshUser = () => {
-    onAuthStateChanged(authService, (user) => {
+    let user = authService.currentUser;
+    if (user) {
       setUserDb({
         displayName: user.displayName,
         uid: user.uid,
         photoURL: user.photoURL,
       });
-    });
+    }
   };
-  console.log(userDb, setUserDb);
+
+  useEffect(() => {
+    authStateChanged().then(() => {
+      refreshUser();
+    });
+  }, []);
+
+  // userDb refresh
+
+  console.log(userDb, authService.currentUser);
   return (
-    <>
+    <div className="wrap">
       <NavbarComponent />
       <Routes>
         <Route
@@ -126,7 +126,7 @@ const App = () => {
           element={<AuthSet userDb={userDb} refreshUser={refreshUser} />}
         />
       </Routes>
-    </>
+    </div>
   );
 };
 

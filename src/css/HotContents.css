@@ -40,7 +40,7 @@
   border: 0;
 }
 
-.category[active=true] {
+.category[aria-selected=true] {
   font-weight: bolder;
 }
 

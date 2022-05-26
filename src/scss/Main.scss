@@ -1,33 +1,32 @@
 body {
   font-size: 12px;
-  .container {
-    max-width: 1210px;
-    min-width: 1210px;
-    margin: 0 auto;
-    padding: 20px 30px;
 
-    .container-left {
-      width: 800px;
-      display: inline-block;
-      margin-right: 50px;
+  .wrap {
+    display: flex;
+    width: 1210px;
+    flex-direction: column;
+    margin: 0 auto;
+    .container {
+      display: flex;
+      width: 1210px;
+      flex-direction: row;
+      margin: 0 auto;
+      .container-left {
+        flex-basis: 800px;
+        margin-right: 100px;
+      }
+      .container-right {
+        flex-grow: 1;
+      }
     }
-    .container-right {
-      width: 300px;
-      display: inline-block;
-      position: absolute;
+
+    .title {
+      font-size: 14px;
+      font-weight: bolder;
+      padding-bottom: 7px;
+      border-bottom: 2px solid #767676;
+      margin-bottom: 7px;
+      padding-left: 7px;
     }
   }
-}
-
-.nav-item {
-  font-size: 14px;
-}
-
-.title {
-  font-size: 14px;
-  font-weight: bolder;
-  padding-bottom: 7px;
-  border-bottom: 2px solid #767676;
-  margin-bottom: 7px;
-  padding-left: 7px;
 }

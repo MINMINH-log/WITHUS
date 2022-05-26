@@ -19,7 +19,6 @@ const LoginForm = () => {
   useEffect(() => {
     onAuthStateChanged(authService, (user) => {
       if (user) {
-        console.log(user);
         navigate("/", { state: user.uid });
       }
     });

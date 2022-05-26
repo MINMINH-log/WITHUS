@@ -1,46 +1,60 @@
-body {
-  margin: 0;
-}
+@use "palette";
 
 .header {
-  position: relative;
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    .logo {
+      width: 200px;
+    }
+    .searchbox {
+      padding: 0;
+      display: inline-block;
+    }
+  }
+  .show-nav {
+    display: none;
+  }
+  .nav-wrap {
+    flex-direction: row;
+    display: flex;
+    padding: 0;
+    margin: 10px 0;
+    .nav-item {
+      width: 50px;
+      list-style-type: none;
+      text-align: center;
+      cursor: pointer;
+      padding: 20px;
+      &:hover {
+        font-weight: bold;
+      }
+      &[aria-selected="true"] {
+        background-color: palette.$main-color;
+        font-weight: bold;
+      }
+    }
+  }
 }
 
-.top-back {
-  position: relative;
-  height: 85px;
-  border-bottom: 1px solid #e5e5e5;
+@media screen and (max-width: 768px) {
+  .header-top {
+    flex-direction: column;
+  }
+  .show-nav {
+    display: block;
+  }
+
+  .nav-wrap {
+    flex-direction: column;
+  }
 }
 
-.menubar-top {
-  position: relative;
-  width: 1130px;
-  height: 100%;
-  margin: 0 auto;
-}
-
-.logo-area {
-  position: relative;
-  height: 100%;
-}
-
-.logo {
-  position: absolute;
-  top: 20px;
-  left: 15px;
-  width: 18%;
-}
-
-.major-category {
-  position: absolute;
-  bottom: 16px;
-  left: 230px;
-}
-
-.main.search-bar {
+.search-bar {
   width: 450px;
   display: flex;
-  border: 2px solid #747474;
+  border: 2px solid palette.$light-grey;
   position: absolute;
   bottom: 16px;
   right: 0;
@@ -79,66 +93,11 @@ body {
   padding-right: 10px;
 }
 
-/* bottom */
-.menubar-bottom {
-  position: relative;
-  border-bottom: #c4c4c4 1px solid;
-  background-color: #f4f4f8;
-  width: 100%;
-  overflow: hidden;
-  height: 55px;
-}
-
-.nav-block {
-  position: relative;
-  width: 1130px;
-  margin: 0 auto;
-  overflow: hidden;
-  height: 100%;
-}
-
-.nav-block,
-.nav-items::after {
-  content: "";
-  display: table;
-  table-layout: fixed;
-  clear: both;
-}
-
-.nav-items {
-  width: 800px;
-  float: left;
-  overflow: hidden;
-  display: flex;
-  margin: 0;
-  flex: auto;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.nav-item {
-  cursor: pointer;
-  float: left;
-  overflow: hidden;
-  width: 100%;
-  height: 55px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.nav-link {
-  flex-grow: 1;
-  height: 55px;
-  text-align: center;
-  line-height: 55px;
-}
-
 /* searchBox */
 .dropdown-contents {
   position: absolute;
-  background-color: white;
-  border: 2px solid #747474;
+  background-color: palette.$off-white;
+  border: 2px solid palette.$light-grey;
   min-width: 55px;
   overflow: auto;
   float: none;
@@ -150,7 +109,7 @@ body {
 }
 
 .dropdown-contents.info {
-  border: 2px solid #f2cc4d;
+  border: 2px solid palette.$main-color;
 }
 
 .dropdown-content {
@@ -174,7 +133,7 @@ body {
 }
 
 .nav-item[active="true"] {
-  background-color: #f2cc4d;
+  background-color: palette.$main-color;
   font-weight: bolder;
 }
 

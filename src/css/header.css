@@ -1,16 +1,14 @@
 .header .header-top {
   display: flex;
-  justify-content: space-between;
   margin-top: 30px;
+  position: relative;
+  justify-content: space-between;
 }
 .header .header-top .logo {
   width: 200px;
 }
-.header .header-top .searchbox {
-  padding: 0;
-  display: inline-block;
-}
-.header .show-nav {
+.header .show-nav,
+.header .show-userinfo {
   display: none;
 }
 .header .nav-wrap {
@@ -35,16 +33,39 @@
 }
 
 @media screen and (max-width: 768px) {
-  .header-top {
-    flex-direction: column;
+  .header .header-top {
+    position: relative;
+    margin-bottom: 20px;
   }
-
-  .show-nav {
-    display: block;
+  .header .show-nav,
+.header .show-userinfo {
+    display: inline-block;
+    font-size: 20px;
+    color: #f2cc4d;
+    cursor: pointer;
   }
-
-  .nav-wrap {
+  .header .show-userinfo {
+    padding-right: 10px;
+  }
+  .header .nav-wrap {
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.5s;
+  }
+  .header .nav-wrap.active {
+    max-height: 454.4px;
+    display: flex;
     flex-direction: column;
+    text-align: center;
+    padding: 0;
+    margin: 10px 0;
+  }
+  .header .nav-wrap.active .nav-item {
+    width: 100%;
+    list-style-type: none;
+    text-align: center;
+    cursor: pointer;
+    padding: 20px;
   }
 }
 .search-bar {

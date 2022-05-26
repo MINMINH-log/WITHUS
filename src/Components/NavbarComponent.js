@@ -7,6 +7,7 @@ import {
   faSearch,
   faBars,
   faAngleDown,
+  faUser,
 } from "@fortawesome/free-solid-svg-icons";
 
 const NavbarComponent = () => {
@@ -46,6 +47,12 @@ const NavbarComponent = () => {
   ]);
   const [categorySelected, setCategorySelected] = useState("");
 
+  const onToggleNav = (e) => {
+    const navWrap = document.querySelector(".nav-wrap");
+    navWrap.classList.toggle("active");
+    console.log(navWrap);
+  };
+
   const onClick = (event) => {
     const {
       target: { className },
@@ -73,7 +80,16 @@ const NavbarComponent = () => {
             <FontAwesomeIcon icon={faSearch} />
           </span>
         </div>
+        <div className="show-more">
+          <span className="show-userinfo">
+            <FontAwesomeIcon icon={faUser} />
+          </span>
+          <span className="show-nav" onClick={onToggleNav}>
+            <FontAwesomeIcon icon={faBars} />
+          </span>
+        </div>
       </div>
+
       <ul className="nav-wrap">
         {navItems.map((c) => (
           <Link to={c.name} key={c.name}>
@@ -87,10 +103,6 @@ const NavbarComponent = () => {
           </Link>
         ))}
       </ul>
-
-      <span className="show-nav">
-        <FontAwesomeIcon icon={faBars} />
-      </span>
     </div>
   );
 };

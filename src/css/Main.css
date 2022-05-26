@@ -1,20 +1,22 @@
 body {
   font-size: 12px;
+  min-width: 510px;
 }
 body .wrap {
   display: flex;
-  width: 1210px;
+  width: 100%;
+  max-width: 1210px;
   flex-direction: column;
   margin: 0 auto;
 }
 body .wrap .container {
   display: flex;
-  width: 1210px;
+  width: 100%;
   flex-direction: row;
   margin: 0 auto;
 }
 body .wrap .container .container-left {
-  flex-basis: 800px;
+  flex-basis: 65%;
   margin-right: 100px;
 }
 body .wrap .container .container-right {
@@ -27,6 +29,16 @@ body .wrap .title {
   border-bottom: 2px solid #767676;
   margin-bottom: 7px;
   padding-left: 7px;
+}
+
+@media screen and (max-width: 768px) {
+  .wrap .container .container-left {
+    width: 768px;
+    margin-right: 0;
+  }
+  .wrap .container .container-right {
+    display: none;
+  }
 }
 
 /*# sourceMappingURL=Main.css.map */

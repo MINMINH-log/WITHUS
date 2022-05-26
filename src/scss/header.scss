@@ -3,17 +3,15 @@
 .header {
   .header-top {
     display: flex;
-    justify-content: space-between;
     margin-top: 30px;
+    position: relative;
+    justify-content: space-between;
     .logo {
       width: 200px;
     }
-    .searchbox {
-      padding: 0;
-      display: inline-block;
-    }
   }
-  .show-nav {
+  .show-nav,
+  .show-userinfo {
     display: none;
   }
   .nav-wrap {
@@ -39,15 +37,42 @@
 }
 
 @media screen and (max-width: 768px) {
-  .header-top {
-    flex-direction: column;
-  }
-  .show-nav {
-    display: block;
-  }
+  .header {
+    .header-top {
+      position: relative;
+      margin-bottom: 20px;
+    }
+    .show-nav,
+    .show-userinfo {
+      display: inline-block;
+      font-size: 20px;
+      color: palette.$main-color;
+      cursor: pointer;
+    }
+    .show-userinfo {
+      padding-right: 10px;
+    }
 
-  .nav-wrap {
-    flex-direction: column;
+    .nav-wrap {
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.5s;
+    }
+    .nav-wrap.active {
+      max-height: 454.4px;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      padding: 0;
+      margin: 10px 0;
+      .nav-item {
+        width: 100%;
+        list-style-type: none;
+        text-align: center;
+        cursor: pointer;
+        padding: 20px;
+      }
+    }
   }
 }
 

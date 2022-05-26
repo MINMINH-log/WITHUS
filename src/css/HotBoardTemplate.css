@@ -8,6 +8,7 @@
 .board-block table {
   height: 110px;
   margin-top: 10px;
+  width: 100%;
   border: none;
 }
 .board-block table tbody {
@@ -16,7 +17,7 @@
 .board-block table tbody tr {
   display: block;
   float: left;
-  width: 266.6666666667px;
+  width: 33.3%;
 }
 .board-block table tbody td {
   display: block;
